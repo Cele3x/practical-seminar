@@ -113,6 +113,8 @@ class NatNetClient:
         pos = Vector3.unpack(data[offset:offset + 12])
         offset += 12
         trace("\tPosition:", pos[0], ",", pos[1], ",", pos[2])
+
+        # Append first bone (Hip)
         if(self.computedHipFrame == False):
             self.csvFrame.append(pos[0])
             self.csvFrame.append(pos[1])
@@ -122,6 +124,8 @@ class NatNetClient:
         rot = Quaternion.unpack(data[offset:offset + 16])
         offset += 16
         trace("\tOrientation:", rot[0], ",", rot[1], ",", rot[2], ",", rot[3])
+
+        # Append bones
         self.csvFrame.append(rot[0])
         self.csvFrame.append(rot[1])
         self.csvFrame.append(rot[2])
@@ -132,32 +136,6 @@ class NatNetClient:
         if self.rigidBodyListener is not None:
             self.rigidBodyListener(id, pos, rot)
 
-        # RB Marker Data ( Before version 3.0.  After Version 3.0 Marker data is in description )
-        if (self.__natNetStreamVersion[0] < 3 and self.__natNetStreamVersion[0] != 0):
-            # Marker count (4 bytes)
-            markerCount = int.from_bytes(data[offset:offset + 4], byteorder='little')
-            offset += 4
-            markerCountRange = range(0, markerCount)
-            trace("\tMarker Count:", markerCount)
-
-            # Marker positions
-            for i in markerCountRange:
-                pos = Vector3.unpack(data[offset:offset + 12])
-                offset += 12
-                trace("\tMarker", i, ":", pos[0], ",", pos[1], ",", pos[2])
-
-            if (self.__natNetStreamVersion[0] >= 2):
-                # Marker ID's
-                for i in markerCountRange:
-                    id = int.from_bytes(data[offset:offset + 4], byteorder='little')
-                    offset += 4
-                    trace("\tMarker ID", i, ":", id)
-
-                # Marker sizes
-                for i in markerCountRange:
-                    size = FloatValue.unpack(data[offset:offset + 4])
-                    offset += 4
-                    trace("\tMarker Size", i, ":", size[0])
 
         if (self.__natNetStreamVersion[0] >= 2):
             markerError, = FloatValue.unpack(data[offset:offset + 4])
@@ -581,6 +559,7 @@ class NatNetClient:
         self.sendCommand(self.NAT_REQUEST_MODELDEF, "", self.commandSocket,
                          (self.serverIPAddress, self.commandPort))
 
+        # Prevent main thread from exit
         while True:
             try:
                 print("idling main")
