@@ -11,16 +11,20 @@ import sys
 
 class WidgetGallery(QDialog):
 
-    serverIpAddress = "172.29.37.169"
-    serverPort = "1511"
+    serverIpAddress = "192.168.178.27"
+    serverPort = "8205"
 
-    targetIpAddress = "172.29.37.169"
-    targetPort = "1612"
+    targetIpAddress = "192.168.178.27"
+    targetPort = "1511"
 
-    multicastAddress = "172.29.37.169"
+    localIpAddress = "192.168.178.27"
+
+    multicastAddress = "239.255.42.99"
 
     streamStatus = False
     interceptStatus = False
+
+
 
     def __init__(self, parent=None):
         super(WidgetGallery, self).__init__(parent)
@@ -49,11 +53,6 @@ class WidgetGallery(QDialog):
 
         # This will create a new NatNet client
         self.streamingClient = NatNetClient()
-
-        # Set specs
-        self.streamingClient.setServerIpAndPort(self.serverIpAddress, self.serverPort)
-        self.streamingClient.setTargetIpAndPort(self.targetIpAddress, self.targetPort)
-        self.streamingClient.setMulticastAddress(self.multicastAddress)
 
         # Start up the streaming client now that the callbacks are set up.
         # This will run perpetually, and operate on a separate thread.
@@ -163,9 +162,15 @@ class WidgetGallery(QDialog):
 
     def toggleStream(self):
         self.streamStatus^=True
-        print(self.streamStatus)
+
         # Start client
         if self.streamStatus == True:
+
+            # Set specs
+            self.streamingClient.setServerIpAndPort(self.serverIpAddress, self.serverPort)
+            self.streamingClient.setTargetIpAndPort(self.targetIpAddress, self.targetPort)
+            self.streamingClient.setMulticastAddress(self.multicastAddress)
+
             self.onStreamConnectionChanged(True)
             self.streamingClient.run()
 
