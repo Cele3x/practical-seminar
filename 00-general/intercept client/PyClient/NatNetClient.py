@@ -47,10 +47,10 @@ class NatNetClient:
 
         # Change this value to the IP address of your local network interface
         # 132.199.133.85
-        # self.localIPAddress = "192.168.178.27"
+        self.localIPAddress = "132.199.129.200"
 
         # Should fetch the right address. Otherwise hardcode it like above
-        self.localIPAddress = socket.gethostbyname(socket.gethostname())
+        # self.localIPAddress = socket.gethostbyname(socket.gethostname())
         print("Local IP Address entered: ", self.localIPAddress)
 
         self.localInterceptPort = 1511
@@ -247,12 +247,24 @@ class NatNetClient:
         ## Set Pos = 0
         posZero = Vector3.pack(0.0,0.0,0.0)
 
-        ## Create new Data Slice
-        newDataSlice = b''.join(
-            [data[offset-4:offset],         # RB ID
-             posZero,                       # RB Pos
-             data[offset+12:offset+28],     # RB Quat
-             data[offset+28:offset+30]])    # RB Tracking Valid
+        if(self.hipIgnored == True):
+
+            ## Create new Data Slice
+            newDataSlice = b''.join(
+                [data[offset-4:offset],         # RB ID
+                 posZero,                       # RB Pos
+                 data[offset+12:offset+28],     # RB Quat
+                 data[offset+28:offset+30]])    # RB Tracking Valid
+
+        else:
+            ## Create new Data Slice
+            newDataSlice = b''.join(
+                [data[offset - 4:offset],           # RB ID
+                 data[offset:offset+12],            # RB Pos
+                 data[offset + 12:offset + 28],     # RB Quat
+                 data[offset + 28:offset + 30]])    # RB Tracking Valid
+
+            self.hipIgnored = True
 
         return newDataSlice
 
@@ -262,6 +274,7 @@ class NatNetClient:
         offset = 0
         offsetChange = 0
         offsetTotalBefore = offsetTotal
+        self.hipIgnored = False
 
         id = int.from_bytes(data[offset:offset + 4], byteorder='little')
         offset += 4
