@@ -307,7 +307,7 @@ class NatNetClient:
     def __unpackMocapData(self, dataFull, offset):
 
         if (self.interceptionStatus == False):
-            if(self.redirSocket is None):
+            if(self.edirSocket is None):
                 'no socket'
                 pass
             else:
