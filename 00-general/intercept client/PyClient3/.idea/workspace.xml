@@ -17,8 +17,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://G:/Client-Server/server.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="221">
-                  <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+                <state>
+                  <caret line="1" column="11" lean-forward="true" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
                 </state>
               </provider>
             </entry>
@@ -35,8 +35,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/NatNetClient.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="561">
-                  <caret line="696" column="11" selection-start-line="696" selection-start-column="11" selection-end-line="696" selection-end-column="11" />
+                <state relative-caret-position="3561">
+                  <caret line="696" column="8" lean-forward="true" selection-start-line="696" selection-start-column="8" selection-end-line="696" selection-end-column="11" />
                 </state>
               </provider>
             </entry>
@@ -48,7 +48,7 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/clientGui.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="331">
+                <state relative-caret-position="178">
                   <caret line="175" column="96" selection-start-line="175" selection-start-column="96" selection-end-line="175" selection-end-column="96" />
                   <folding>
                     <element signature="e#0#46#0" expanded="true" />
@@ -130,7 +130,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PyClient2" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -310,10 +311,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://G:/Client-Server/server.py">
+    <entry file="file://$PROJECT_DIR$/clientGui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+        <state relative-caret-position="178">
+          <caret line="175" column="96" selection-start-line="175" selection-start-column="96" selection-end-line="175" selection-end-column="96" />
+          <folding>
+            <element signature="e#0#46#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -324,20 +328,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NatNetClient.py">
+    <entry file="file://G:/Client-Server/server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="696" column="11" selection-start-line="696" selection-start-column="11" selection-end-line="696" selection-end-column="11" />
+        <state>
+          <caret line="1" column="11" lean-forward="true" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clientGui.py">
+    <entry file="file://$PROJECT_DIR$/NatNetClient.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="175" column="96" selection-start-line="175" selection-start-column="96" selection-end-line="175" selection-end-column="96" />
-          <folding>
-            <element signature="e#0#46#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="3561">
+          <caret line="696" column="8" lean-forward="true" selection-start-line="696" selection-start-column="8" selection-end-line="696" selection-end-column="11" />
         </state>
       </provider>
     </entry>

@@ -3,7 +3,8 @@ from PyQt5.QtWidgets import (QApplication, QCheckBox, QComboBox, QDateTimeEdit,
         QDial, QDialog, QGridLayout, QGroupBox, QHBoxLayout, QLabel, QLineEdit,
         QPushButton, QRadioButton, QScrollBar, QSizePolicy,
         QSlider, QSpinBox, QStyleFactory, QTableWidget, QTabWidget, QTextEdit,
-        QVBoxLayout, QWidget)
+        QVBoxLayout, QWidget, QFrame)
+from PyQt5.QtGui import QColor, QPalette
 
 from NatNetClient import NatNetClient
 
@@ -29,20 +30,21 @@ class WidgetGallery(QDialog):
     def __init__(self, parent=None):
         super(WidgetGallery, self).__init__(parent)
 
-        self.createTopLeftGroupBox()
-        self.createTopRightGroupBox()
+        self.createTopGroupBox()
+        self.createMiddleGroupBox()
+        self.createBottomGroupBox()
 
         topLayout = QHBoxLayout()
         topLayout.addStretch(1)
 
         mainLayout = QGridLayout()
         mainLayout.addLayout(topLayout, 0, 0, 1, 2)
-        mainLayout.addWidget(self.topLeftGroupBox, 1, 0)
-        mainLayout.addWidget(self.topRightGroupBox, 1, 1)
+        mainLayout.addWidget(self.topGroupBox, 1, 0)
+        mainLayout.addWidget(self.midGroupBox, 2, 0)
+        mainLayout.addWidget(self.bottomGroupBox, 3, 0)
         mainLayout.setRowStretch(1, 1)
         mainLayout.setRowStretch(2, 1)
-        mainLayout.setColumnStretch(0, 1)
-        mainLayout.setColumnStretch(1, 1)
+        mainLayout.setRowStretch(3, 1)
         self.setLayout(mainLayout)
 
         self.setWindowTitle("PS19 Client")
@@ -60,9 +62,13 @@ class WidgetGallery(QDialog):
 
         self.streamingClient.setStreamConnectionListener(self.onStreamConnectionChanged)
         self.streamingClient.setStreamInterceptListener(self.onInterceptionChanged)
+        self.streamingClient.setModelLoadUpListener(self.updateModelLoadUp)
 
-    def createTopLeftGroupBox(self):
-        self.topLeftGroupBox = QGroupBox("Stream")
+        self.streamingClient.startLoadModelsThread()
+
+    def createTopGroupBox(self):
+
+        self.topGroupBox = QGroupBox("Stream")
 
         serverIpLabel = QLabel("Server IP")
         serverPortLabel = QLabel("Server Port")
@@ -73,6 +79,20 @@ class WidgetGallery(QDialog):
         self.serverPortLineEdit = QLineEdit(self.serverPort)
         self.multicastLineEdit = QLineEdit(self.multicastAddress)
         self.localIpAddressEdit = QLineEdit(self.localIpAddress)
+
+        sep = QFrame()
+        sep.setFrameShape(QFrame.HLine)
+        sep2 = QFrame()
+        sep2.setFrameShape(QFrame.HLine)
+
+        sep.setContentsMargins(10, 100, 10, 100)
+        sep2.setContentsMargins(10, 100, 10, 100)
+
+        targetIpLabel = QLabel("Target IP")
+        targetPortLabel = QLabel("Target Port")
+
+        self.targetIpLineEdit = QLineEdit(self.targetIpAddress)
+        self.targetPortLineEdit = QLineEdit(self.targetPort)
 
         streamStatusLabel = QLabel("Status")
 
@@ -100,23 +120,40 @@ class WidgetGallery(QDialog):
         layout.addWidget(localIpLabel, 3, 0, 1, 1)
         layout.addWidget(self.localIpAddressEdit, 3, 1, 1, 1)
 
-        layout.addWidget(streamStatusLabel, 4, 0, 2, 1)
-        layout.addWidget(self.radioButtonStreamConnected, 4, 1, 1, 1)
-        layout.addWidget(self.radioButtonStreamDisconnected, 5, 1, 1, 1)
-        layout.addWidget(toggleStreamButton, 6, 0, 1, 2)
+        layout.addWidget(sep, 4, 0, 1, 2)
+
+        layout.addWidget(targetIpLabel, 5, 0, 1, 1)
+        layout.addWidget(self.targetIpLineEdit, 5, 1, 1, 1)
+        layout.addWidget(targetPortLabel, 6, 0, 1, 1)
+        layout.addWidget(self.targetPortLineEdit, 6, 1, 1, 1)
+
+        layout.addWidget(sep2, 7, 0, 1, 2)
+
+        layout.addWidget(streamStatusLabel, 8, 0, 2, 1)
+        layout.addWidget(self.radioButtonStreamConnected, 8, 1, 1, 1)
+        layout.addWidget(self.radioButtonStreamDisconnected, 9, 1, 1, 1)
+        layout.addWidget(toggleStreamButton, 10, 0, 1, 2)
 
         layout.setRowStretch(7, 1)
 
-        self.topLeftGroupBox.setLayout(layout)
+        self.topGroupBox.setLayout(layout)
 
-    def createTopRightGroupBox(self):
-        self.topRightGroupBox = QGroupBox("Intercept")
+    def createMiddleGroupBox(self):
+        self.midGroupBox = QGroupBox("")
 
-        targetIpLabel = QLabel("Target IP")
-        targetPortLabel = QLabel("Target Port")
+        modelsLoadUpProgressLabel = QLabel("Models loaded:")
 
-        self.targetIpLineEdit = QLineEdit(self.targetIpAddress)
-        self.targetPortLineEdit = QLineEdit(self.targetPort)
+        self.modelsLoadUpProgress = QLabel("")
+
+        layout = QGridLayout()
+
+        layout.addWidget(modelsLoadUpProgressLabel, 0, 0, 1, 1)
+        layout.addWidget(self.modelsLoadUpProgress, 0, 1, 1, 1)
+
+        self.midGroupBox.setLayout(layout)
+
+    def createBottomGroupBox(self):
+        self.bottomGroupBox = QGroupBox("Intercept")
 
         interceptStatusLabel = QLabel("Status")
 
@@ -133,11 +170,6 @@ class WidgetGallery(QDialog):
 
         layout = QGridLayout()
 
-        layout.addWidget(targetIpLabel, 0, 0, 1, 1)
-        layout.addWidget(self.targetIpLineEdit, 0, 1, 1, 1)
-        layout.addWidget(targetPortLabel, 1, 0, 1, 1)
-        layout.addWidget(self.targetPortLineEdit, 1, 1, 1, 1)
-
         layout.addWidget(interceptStatusLabel, 2, 0, 2, 1)
 
         layout.addWidget(self.radioButtonInterceptEnabled, 2, 1, 1, 1)
@@ -146,24 +178,42 @@ class WidgetGallery(QDialog):
         layout.addWidget(toggleInterception, 4, 0, 1, 2)
         layout.setRowStretch(5, 1)
 
-        self.topRightGroupBox.setLayout(layout)
+        self.bottomGroupBox.setLayout(layout)
+        self.bottomGroupBox.setEnabled(False)
+
+    def toggleStreamEdits(self, status):
+        self.serverIpLineEdit.setEnabled(status)
+        self.serverPortLineEdit.setEnabled(status)
+        self.multicastLineEdit.setEnabled(status)
+        self.localIpAddressEdit.setEnabled(status)
+        self.targetIpLineEdit.setEnabled(status)
+        self.targetPortLineEdit.setEnabled(status)
 
     def onStreamConnectionChanged(self, status):
         if status == True:
             self.radioButtonStreamConnected.setChecked(True)
             self.radioButtonStreamDisconnected.setChecked(False)
+            self.bottomGroupBox.setEnabled(True)
+            self.toggleStreamEdits(False)
         else:
             self.radioButtonStreamConnected.setChecked(False)
             self.radioButtonStreamDisconnected.setChecked(True)
+            self.bottomGroupBox.setEnabled(False)
+            self.toggleStreamEdits(True)
 
     def onInterceptionChanged(self, status):
-
         if status == True:
             self.radioButtonInterceptEnabled.setChecked(True)
             self.radioButtonInterceptDisabled.setChecked(False)
         else:
             self.radioButtonInterceptEnabled.setChecked(False)
             self.radioButtonInterceptDisabled.setChecked(True)
+
+    def updateModelLoadUp(self, progress):
+        if(progress == -1):
+            self.modelsLoadUpProgress.text("Finished loading!")
+        else:
+            self.modelsLoadUpProgress.setText(progress)
 
     def toggleStream(self):
         self.streamStatus^=True
@@ -183,13 +233,16 @@ class WidgetGallery(QDialog):
         # Stop client
         else:
             self.onStreamConnectionChanged(False)
-            #self.streamingClient.stop()
+            self.streamingClient.stop()
+            self.interceptStatus = False
+            self.streamingClient.setInterceptStatus(self.interceptStatus)
 
-    def toggleIntercept(self, status):
+    def toggleIntercept(self):
         self.interceptStatus^=True
+        self.streamingClient.setInterceptStatus(self.interceptStatus)
 
-        if(self.interceptStatus==True):
-            self.streamingClient.setInterceptStatus(True)
+    def natNetFinishedLoading(self):
+        self.topRightGroupBox.setEnabled(True)
 
 
 

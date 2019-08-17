@@ -25,8 +25,8 @@ from threading import Thread
 
 
 def trace(*args):
-    print( "".join(map(str,args)) )
-    #pass
+    # print( "".join(map(str,args)) )
+    pass
 
 def trace2(*args):
     # print( "".join(map(str,args)))
@@ -80,6 +80,8 @@ class NatNetClient:
 
         self.interceptionStatus = False
 
+        # Create a separate thread for loading models
+        self.preloadModelsThread = Thread(target=self.loadModels, args=())
 
 
     # Client/server message ids
@@ -307,7 +309,7 @@ class NatNetClient:
     def __unpackMocapData(self, dataFull, offset):
 
         if (self.interceptionStatus == False):
-            if(self.edirSocket is None):
+            if(self.redirSocket is None):
                 'no socket'
                 pass
             else:
@@ -601,14 +603,17 @@ class NatNetClient:
             elif (type == 2):
                 offset += self.__unpackSkeletonDescription(data[offset:])
 
-        self.setStreamConnectionListener(True)
+        self.streamConnectionListener(True)
 
-    def __dataThreadFunction(self, socket):
+    def __dataThreadFunction(self, socket, stopThread):
         while True:
             # Block for input
             data, addr = socket.recvfrom(32768)  # 32k byte buffer size
             if (len(data) > 0):
                 self.__processMessage(data)
+
+            if stopThread == True:
+                break
 
     def __processMessage(self, data):
 
@@ -647,17 +652,30 @@ class NatNetClient:
         socket.sendto(data, address)
 
     def setStreamConnectionListener(self, listener):
-        self.setStreamConnectionListener = listener
-
+        self.streamConnectionListener = listener
 
     def setStreamInterceptListener(self, listener):
-        self.setStreamInterceptListener = listener
+        self.streamInterceptListener = listener
+
+    def setModelLoadUpListener(self, listener):
+        self.modelLoadUpListener = listener
 
     def setInterceptStatus(self, status):
         self.interceptionStatus = status
-        self.setStreamInterceptListener(status)
-        print("Now Intercepting Data")
+        self.streamInterceptListener(status)
 
+        if(self.interceptionStatus == True):
+            print("Start Intercepting Data")
+        if(self.interceptionStatus == False):
+            print("Stop Intercepting Data")
+
+    def startLoadModelsThread(self):
+        self.preloadModelsThread.start()
+
+    def loadModels(self):
+        for x in range(0,10):
+            self.modelLoadUpListener(str(x) +" / " "10")
+            time.sleep(0.5)
 
     def run(self):
 
@@ -679,15 +697,15 @@ class NatNetClient:
             exit
 
         # Create a separate thread for receiving data packets
-        dataThread = Thread(target=self.__dataThreadFunction, args=(self.dataSocket,))
-        dataThread.start()
+        self.stopDataThread = False
+        self.dataThread = Thread(target=self.__dataThreadFunction, args=(self.dataSocket, lambda : self.stopDataThread))
+        self.dataThread.start()
 
-
+        '''
         # Create a separate thread for receiving command packets
         commandThread = Thread(target=self.__dataThreadFunction, args=(self.commandSocket,))
         commandThread.start()
 
-        '''
         self.sendCommand(self.NAT_REQUEST_MODELDEF, "", self.commandSocket,
                          (self.serverIPAddress, self.commandPort))
         '''
@@ -697,9 +715,7 @@ class NatNetClient:
         print("To: ", self.outgoingTargetIpAddress, ":", self.outgoingTargetPort)
 
     def stop(self):
-        pass
-        
-
+        self.stopDataThread = True
 
 
 
