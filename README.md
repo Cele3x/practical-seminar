@@ -31,6 +31,7 @@ This folder contains all data gathered during the evaluation study. It also cont
 - Demographics: Contains a list of the demographics of all study participants, as well as some information about whether they were wearing glasses or not. Additionally it contains information about previous experience in VR and sportiness of the participants.
 - Perfomance Data: Contains the measurments of the conducted Perfomance task. 
 - Questionnaire Data: Contains the gathered results of the asked questionnaire. 
+- Unity Project: Contains the used Unity 3D Scene used to evaluated the presented system and to collect questionnaire data as well as perfomance data. 
 
 ## Image General
 This folder contains all needed image for this repository, as well as all images needed for the paper and the "Projekt Handbuch". 
