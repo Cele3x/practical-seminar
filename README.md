@@ -51,5 +51,6 @@ This folder contains everything needed to conduct the in the paper described lat
 This folder contains everything related to the used neural network, it is structured as shown in the following: 
 - Data-Handling: Contains all scripts needed to handle the data gathered in the data acquisiton study. 
 - Evaluation: Contains all scripts needed for evaluating the presented neural network. 
+- Models: Contains all trained models, even those not evaluated in the evaluation study. 
 - Training: Contains all scripts needed for training the presented neural network. 
 
