@@ -16,7 +16,7 @@ For the actual submission only the folder __submission__ , found in the root dir
 Each subfolder will be described in the following, starting with __Data Acquisition Study__: 
 
 ## Data Acquisiton Study
-This folder contains all the material needed and obtained for and during the data acquisiton study. It is structured as follows: 
+This folder contains all the material needed and obtained for and during the data acquisiton study. It does NOT contain the acutal gathered data for the coresponding participant, since this is not possible due to GitHubs size limitation for repositories. The actual data will be submitted seperatly on an USB devices. It is structured as follows: 
 - Demographics: Contains a list of the demographics of all study participants, as well as some information about whether they were wearing glasses or not. Additionally it contains information about previous experience in VR and sportiness of the participants. 
 - Video: Showing one voluniteer participanting in the conducted acquisiton study. Consense to show the video was obtained. 
 
@@ -27,6 +27,10 @@ This folder comprises two subfolder with the following containment:
 - Projekt Handbuch: This is a document which elabroates how to use the developed movement prediciton system. It, as well, explaines a bit more technical back ground compared to the presented paper above. Additonally it grants deeper insight in the developed and presented Latency Test Framework. 
 
 ## Evaluation Study 
+This folder contains all data gathered during the evaluation study. It also contains the measured results for the questionnaire and the performance task. It does not contain or discuss any results or findings, please see the submitted paper for findings, results and a conclusion. 
+- Demographics: Contains a list of the demographics of all study participants, as well as some information about whether they were wearing glasses or not. Additionally it contains information about previous experience in VR and sportiness of the participants.
+- Perfomance Data: Contains the measurments of the conducted Perfomance task. 
+- Questionnaire Data: Contains the gathered results of the asked questionnaire. 
 
 ## Image General
 This folder contains all needed image for this repository, as well as all images needed for the paper and the "Projekt Handbuch". 
