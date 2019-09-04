@@ -54,3 +54,4 @@ This folder contains everything related to the used neural network, it is struct
 - Models: Contains all trained models, even those not evaluated in the evaluation study. 
 - Training: Contains all scripts needed for training the presented neural network. 
 
+Does NOT contain the virtual enviroment used. Please make sure you have python 3.7.X and the needed packages installed. 
