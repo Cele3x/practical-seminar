@@ -11,7 +11,7 @@ For the actual submission only the folder __submission__ , found in the root dir
 - [Intercepter Client](https://github.com/Cele3x/practical-seminar/tree/master/submission/Intercepter%Client)
 - [Latency Test Framework](https://github.com/Cele3x/practical-seminar/tree/master/submission/Latency%Test%Framework)
 - [Neural Network](https://github.com/Cele3x/practical-seminar/tree/master/submission/Neural%Network)
-- [Videos General](https://github.com/Cele3x/practical-seminar/tree/master/submission/Videos%General)
+
 
 Each subfolder will be described in the following, starting with __Data Acquisition Study__: 
 
@@ -32,5 +32,13 @@ This folder comprises two subfolder with the following containment:
 ## Image General
 This folder contains all needed image for this repository, as well as all images needed for the paper and the "Projekt Handbuch". 
 ## Intercepter Client
+This folder is used for the developed Intercepter Client and all its dependencies, its containment is structured as follows: 
+- Folder 1
+- Folder 2 
+- Folder 3 
 ## Latency Test Framework
+This folder contains everything needed to conduct the in the paper described latency tests. The content is organized as shown below:
+- Arduino Sketches: The sketches used to run the LTF can be found here. There are two seperated folders, one containing the early test variant to establish a connection between an external computer and the Arduino. The second script is the actual script used to measure latency. It connects one digital sensor and one analog sensor, waits for the to trigger and sends the corresponding event to the connected external computer. 
+- Python Scripts: This folder contains the script to obtain information from the arduino. This script gathers the two distinc timestamps received from the Arduino, compares them and prints a latency value to the console and a CSV file. 
+
 ## Neural Network 
