@@ -17,4 +17,11 @@ Each subfolder will be described in the following, starting with __Data Acquisit
 
 ## Data Acquisiton Study
 
+This folder contains all the material needed and obtained for and during the data acquisiton study. It is structured as follows: 
+- Demographics: Contains a list of the demographics of all study participants, as well as some information about whether they were wearing glasses or not. Additionally it contains information about previous experience in VR and sportiness of the participants. 
+- Video: Showing one voluniteer participanting in the conducted acquisiton study. Consense to show the video was obtained. 
 
+
+## Docs 
+
+This folder contains two subfolder with the following containment: 
