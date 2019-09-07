@@ -19,6 +19,6 @@ for i in range(1,100):
     print("Model predicition: ", model.predict(test_input))
     end_time = time.time_ns()
     print(end_time - start_time)
-    #print("Actual value: ",df_target.iloc[0:1])
+    #print("Actual value: ",df_target.iloc[i-1:i])
     print("______________________________________________________--")
     #print("Model5 predicition: ", model.predict(df.iloc[0:1]))
