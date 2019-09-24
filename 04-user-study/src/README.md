@@ -20,7 +20,13 @@ The questionnaire can be started by "touching" the virtually placed start button
 
 For this task the two whiteboards have to be enabled in the scene externally while placing the real world equivalents at the predefined same positions. While the participant touches virtually and in reality each whiteboard in alternation for a specific time the repetitions are getting counted and recorded by the study master.
 
-# Usage
+# Getting Started
+
+### Configuration
+
+For being able to project the body movements on the model from the motion capturing system, OptiTracks Unity plugin is required ([Link](https://optitrack.com/downloads/plugins.html#unity-plugin)). It should be configured like depicted with the **[INSERT VARIABLE NAME]** being the IP address of the streaming OptiTrack host and **[INSERT VARIABLE NAME]** the skeleton id defined inside the OptiTrack client:
+
+**[INSERT IMAGE HERE]**
 
 ### Default Scene Configuration
 
@@ -32,7 +38,8 @@ The starting scene configuration should be with
 ### Prior Study
 
 Before the study can be conducted and the scene started a **participant id** has to be specified for being able to associate results to a participant:
-> IMAGE
+
+**[INSERT IMAGE HERE]**
 
 ### Mid-Study
 
