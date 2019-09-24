@@ -2,7 +2,7 @@
 
 This Unity application was developed for the user study for predicting body movements. The participant is virtually placed via OptiTracks motion capturing system and an HTC Vive as head mounted device in a scene similar to the real surroundings where the study takes place. Via external adjustments the motion captured body movements are getting intercepted, changed and projected on the participants virtual model based on different prediction values.
 
-The application can be subdivided into three main purposes.
+The application can be subdivided into three main purposes:
 
 ### Body Visualization
 
@@ -11,7 +11,9 @@ At start the participant is located without any configuration in a replica of th
 ### Evaluating Self-Perception
 
 After some time where the participant could adjust itself to the altered movement predictions a questionnaire can be enabled externally for evaluating made experiences. 
+
 The questionnaire is segmented into two contentual parts with the first part being questions from the IPQ questionnaire and and secondly questions regarding limb ownership. The questions from each segment are randomly sorted each time the questionnaire is getting started while the segment order remains static.
+
 The questionnaire can be started by "touching" the virtually placed start button. After selection of one of the five offered answer options a forward button is depicted until no questions remain where the questionnaire is disabled again automatically.
 
 ### Performance Task
