@@ -31,9 +31,12 @@ Before the study can be conducted and the scene started a participant id has to 
 > IMAGE
 
 During the study 
-* the **questionnaire** object has to be **enabled** when needed (disabled automatically) and
+* the **questionnaire** object has to be **enabled** when needed (being disabled again automatically) and
 * the **whiteboard** objects switched in its availibility status for the performance task.
 
 # Results
 
-> where to find and how to read results
+While the performance task results are recorded by the study master solely, the answers from the evaluation questionnaire are stored inside a CSV file (**INSERT PATH HERE**).
+
+For each answered questions a new line like the following is appended to the CSV file: `5,6,4,20190823144016` and can be read as `[PARTICIPANT_ID],[QUESTION_ID],[ANSWER_OPTION_ID],[DATETIME_STAMP]`.
+
