@@ -38,5 +38,5 @@ During the study
 
 While the performance task results are recorded by the study master solely, the answers from the evaluation questionnaire are stored inside a CSV file (**INSERT PATH HERE**).
 
-For each answered questions a new line like the following is appended to the CSV file: `5,6,4,20190823144016` and can be read as `[PARTICIPANT_ID],[QUESTION_ID],[ANSWER_OPTION_ID],[DATETIME_STAMP]`.
+For each answered questions a new line like the following is appended to the CSV: `5,6,4,20190823144016` and can be read as `[PARTICIPANT_ID],[QUESTION_ID],[ANSWER_OPTION_ID],[DATETIME_STAMP]`.
 
