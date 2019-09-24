@@ -20,7 +20,7 @@ The questionnaire can be started by "touching" the virtually placed start button
 
 For this task the two whiteboards have to be enabled in the scene externally while placing the real world equivalents at the predefined same positions. While the participant touches virtually and in reality each whiteboard in alternation for a specific time the repetitions are getting counted and recorded by the study master.
 
-# Getting Started
+# Configuration and Usage Instructions
 
 ### Configuration
 
