@@ -22,13 +22,19 @@ For this task the two whiteboards have to be enabled in the scene externally whi
 
 # Usage
 
+### Default Scene Configuration
+
 The starting scene configuration should be with
 * the **questionnaire** object being **disabled**,
 * the **whiteboards outside** the marked area **enabled** and
 * the **whiteboards inside** the marked area **disabled**. 
 
-Before the study can be conducted and the scene started a participant id has to be specified for being able to associate results to a participant:
+### Prior Study
+
+Before the study can be conducted and the scene started a **participant id** has to be specified for being able to associate results to a participant:
 > IMAGE
+
+### Mid-Study
 
 During the study 
 * the **questionnaire** object has to be **enabled** when needed (being disabled again automatically) and
