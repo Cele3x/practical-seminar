@@ -24,7 +24,9 @@ For this task the two whiteboards have to be enabled in the scene externally whi
 
 ### Configuration
 
-For being able to project the body movements on the model from the motion capturing system, OptiTracks Unity plugin is required ([Link](https://optitrack.com/downloads/plugins.html#unity-plugin)). It should be configured like depicted with the **[INSERT VARIABLE NAME]** being the IP address of the streaming OptiTrack host and **[INSERT VARIABLE NAME]** the skeleton id defined inside the OptiTrack client:
+For being able to project the body movements on the model from the motion capturing system, OptiTracks Unity plugin is required ([Link](https://optitrack.com/downloads/plugins.html#unity-plugin)). 
+
+It should be configured like depicted with the **[INSERT VARIABLE NAME]** being the IP address of the streaming OptiTrack host and **[INSERT VARIABLE NAME]** the skeleton id defined inside the OptiTrack client:
 
 **[INSERT IMAGE HERE]**
 
