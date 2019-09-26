@@ -26,9 +26,7 @@ For this task the two whiteboards have to be enabled in the scene externally whi
 
 For being able to project the body movements on the model from the motion capturing system, OptiTracks Unity plugin is required ([Link](https://optitrack.com/downloads/plugins.html#unity-plugin)). 
 
-It should be configured like depicted with the **[INSERT VARIABLE NAME]** being the IP address of the streaming OptiTrack host and **[INSERT VARIABLE NAME]** the skeleton id defined inside the OptiTrack client:
-
-**[INSERT IMAGE HERE]**
+It should be configured on the "Client - OptiTrack" game object with the **ServerAddress** being the IP address of the streaming OptiTrack host and on the "Avatar" game object with **Skeleton Asset Name** the skeleton id defined inside the OptiTrack client.
 
 ### Default Scene Configuration
 
@@ -39,9 +37,7 @@ The starting scene configuration should be with
 
 ### Prior Study
 
-Before the study can be conducted and the scene started a **participant id** has to be specified for being able to associate results to a participant:
-
-**[INSERT IMAGE HERE]**
+Before the study can be conducted and the scene started, the **personId** has to be specified on the **Questionnaire** object for being able to associate results to a participant.
 
 ### Mid-Study
 
@@ -51,7 +47,7 @@ During the study
 
 # Results
 
-While the performance task results are recorded by the study master solely, the answers from the evaluation questionnaire are stored inside a CSV file (**INSERT PATH HERE**).
+While the performance task results are recorded by the study master solely, the answers from the evaluation questionnaire are stored inside a CSV file (*C:\Users\LocalAdmin\Documents\Projekte\VR-Prediction\questionnaire.csv*).
 
 For each answered questions a new line like the following is appended to the CSV: `5,6,4,20190823144016` and can be read as `[PARTICIPANT_ID],[QUESTION_ID],[ANSWER_OPTION_ID],[DATETIME_STAMP]`.
 
