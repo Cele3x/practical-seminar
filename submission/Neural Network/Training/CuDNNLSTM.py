@@ -189,7 +189,7 @@ model = tf.keras.Sequential()
 
 # Defining Layers
 model.add(CuDNNLSTM(units=256,return_sequences=True, input_shape=(None, num_x_signals,)))
-model.add(Dense(num_y_signals))
+model.add(Dense(num_y_signals), activation="relu")
 model.compile(loss="mean_squared_error", optimizer=optimizer, metrics = ["accuracy"])
 model.summary()
 
