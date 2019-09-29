@@ -128,7 +128,7 @@ num_y_signals = y_data.shape[1]
 
 l1 = tf.keras.layers.Dense(units=INPUT_PREDICITION_VALUE, input_shape=[INPUT_PREDICITION_VALUE,])
 l3 = tf.keras.layers.Dense(units=2048)
-l4 = tf.keras.layers.Dense(units=4096)
+l4 = tf.keras.layers.Dense(units=4096, activation="relu")
 l5 = tf.keras.layers.Dropout(0.1)
 l7 = tf.keras.layers.Dense(units=PREDICITION_SPLIT_JOINTS_VALUE)
 model = tf.keras.Sequential([l1,l3,l4,l7])
