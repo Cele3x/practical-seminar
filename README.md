@@ -38,9 +38,8 @@ This folder contains all needed image for this repository, as well as all images
 
 ## Intercepter Client
 This folder is used for the developed Intercepter Client and all its dependencies, its containment is structured as follows: 
-- Folder 1
-- Folder 2 
-- Folder 3 
+- Client
+
 
 ## Latency Test Framework
 This folder contains everything needed to conduct the in the paper described latency tests. The content is organized as shown below:
@@ -52,6 +51,6 @@ This folder contains everything related to the used neural network, it is struct
 - Data-Handling: Contains all scripts needed to handle the data gathered in the data acquisiton study. 
 - Evaluation: Contains all scripts needed for evaluating the presented neural network. 
 - Models: Contains all trained models, even those not evaluated in the evaluation study. 
-- Training: Contains all scripts needed for training the presented neural network. 
+- Training: Contains all scripts needed for training the presented neural networks. 
 
 Does NOT contain the virtual enviroment used. Please make sure you have python 3.7.X and the needed packages installed. 
