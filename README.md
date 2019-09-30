@@ -8,7 +8,7 @@ For the actual submission only the folder __submission__ , found in the root dir
 - [Docs](https://github.com/Cele3x/practical-seminar/tree/master/submission/Docs)
 - [Evaluation Study](https://github.com/Cele3x/practical-seminar/tree/master/submission/Evaluation%Study)
 - [Images General](https://github.com/Cele3x/practical-seminar/tree/master/submission/Images%General)
-- [Intercepter Client](https://github.com/Cele3x/practical-seminar/tree/master/submission/Intercepter%Client)
+- [Intercepter Client](https://github.com/Cele3x/practical-seminar/tree/master/submission/Intercepter%20Client)
 - [Latency Test Framework](https://github.com/Cele3x/practical-seminar/tree/master/submission/Latency%Test%Framework)
 - [Neural Network](https://github.com/Cele3x/practical-seminar/tree/master/submission/Neural%Network)
 
