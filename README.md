@@ -38,7 +38,8 @@ This folder contains all needed image for this repository, as well as all images
 
 ## Intercepter Client
 This folder is used for the developed Intercepter Client and all its dependencies, its containment is structured as follows: 
-- Client
+- GuiClient: Graphical user interface for intercepting stream data and changing prediction models.
+- CSVClient: Command line tool for reading and writing motive stream data to a CSV file. (First Draft)
 
 
 ## Latency Test Framework
